@@ -5,64 +5,40 @@ var wordGuessGame = {
   wordsToPick: {
     kobebryant: {
       picture: "kobebryant.jpg",
-      song: "Illegal Alien",
-      preview: "https://p.scdn.co/mp3-preview/b29a2b925b9654e0efaaff37504fd234307e0ad8"
-    },
+      },
     stephcurry: {
       picture: "curry.jpg",
-      song: "Material Girl",
-      preview: "https://p.scdn.co/mp3-preview/5ff7f7b7d2af1a747da275bed3c49054c01b5b1c"
-    },
+      },
     anthonydavis: {
       picture: "davis.jpg",
-      song: "Rosanna",
-      preview: "https://p.scdn.co/mp3-preview/7cef811eaeb7c7b98245750e73d9d68e9008f317"
-    },
+      },
     demarderozan: {
       picture: "derozan.jpg",
-      song: "Princes of the Universe",
-      preview: "https://p.scdn.co/mp3-preview/b84f24300476f3d3f20056d2388cc51db2e3891f"
-    },
+     },
     kevindurant: {
       picture: "durant.jpg",
-      song: "With or Without You",
-      preview: "https://p.scdn.co/mp3-preview/28365dff1890075c1371628371cd0e5bbff9a3a3"
-    },
+      },
     giannisantetokounmpo: {
       picture: "giannisantetokounmpo.jpg",
-      song: "Master of Puppets",
-      preview: "https://p.scdn.co/mp3-preview/60e6f8dab43f176dd9fb5e795d4e6459bad52e9e"
-    },
+     },
     alleniverson: {
       picture: "iverson.jpg",
-      song: "Don't Stop Believin'",
-      preview: "https://p.scdn.co/mp3-preview/21b9abd3cd2eea634e17a917196fdd5ba2e82670"
-    },
+      },
     lebronjames: {
       picture: "Lebronjames.jpg",
-      song: "Need You Tonight",
-      preview: "https://p.scdn.co/mp3-preview/61b17a335d5afc1c4086b1b08e2400f0da147977"
-    },
+      },
     magicjohnson: {
       picture: "magicjohnson.jpg",
-      song: "Fallen Angel",
-      preview: "https://p.scdn.co/mp3-preview/0365ad1f152f1834b42b857c4625191cebf9f987"
-    },
+      },
     michaeljordan: {
       picture: "Michaeljordan.jpg",
-      song: "Limelight",
-      preview: "https://p.scdn.co/mp3-preview/154987dfb07f2fc5ed7aa4d76b80c5dc08ff4d6b"
-    },
+      },
     shaquilleoneal: {
       picture: "Shaq.jpg",
-      song: "Call Me",
-      preview: "https://p.scdn.co/mp3-preview/ed5a443bc86176135ebca8a114f66f4d814d4c90"
-    },
+      },
     yaoming: {
       picture: "yaoming.jpg",
-      song: "Call Me",
-      preview: "https://p.scdn.co/mp3-preview/ed5a443bc86176135ebca8a114f66f4d814d4c90"
-    }
+      }
   },
 
   // Variables that set the initial state of our wordGuess game.
@@ -226,18 +202,17 @@ var wordGuessGame = {
       document.querySelector("#wins").innerHTML = this.wins;
 
       // Update the song title and band on the page.
-      document.querySelector("#music").innerHTML = this.wordsToPick[this.wordInPlay].song +
-      " By " + this.wordInPlay;
+      document.querySelector("#music").innerHTML = this.wordInPlay;
 
+      
       // Update the image of the band on the page.
       document.querySelector("#band-div").innerHTML =
         "<img class='band-image' src='assets/images/" +
         this.wordsToPick[this.wordInPlay].picture + "' alt='" +
-        this.wordsToPick[this.wordInPlay].song + "'>";
+         "'>";
 
       // Play an audio track of the band.
-      var audio = new Audio(this.wordsToPick[this.wordInPlay].preview);
-      audio.play();
+
 
       // return true, which will trigger the restart of our game in the updatePage function.
       return true;
@@ -257,3 +232,43 @@ document.onkeyup = function(event) {
   // Pass the guessed letter into our updatePage function to run the game logic.
   wordGuessGame.updatePage(wordGuessGame.letterGuessed);
 };
+
+var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '330',
+          width: '550',
+          videoId: 'dAlzuPXHBX8',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 40000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }

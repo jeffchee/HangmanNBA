@@ -1,7 +1,26 @@
 #container {
-  position: absolute;
-  top: 300px;
-  left: 500px;
+padding: 10px;
+background-image: url("../images/logo1.jpg");
+opacity: 0.8;
+margin: 30px;
+text-align: center;
+
+}
+
+.col-6 {
+  border: 5px solid red;
+ background-color: white;
+opacity:0.99;
+text-align: center;
+}
+
+h1 {
+  background-color: white;
+  width: 241px;
+  font-style: red;
+  border: 5px solid blue;
+  padding: 5px;
+  margin: 5px;
 }
 
 h2 {
@@ -15,21 +34,49 @@ div {
 .band-image {
   width: 250px;
   height: 200px;
-  border-radius: 25px;
+  text-align: center;
 }
 
 #band-div {
-  width: 300px;
+ 
   padding: 20px;
-  margin-left: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  
 }
 
 #game-section {
   float: left;
   width: 300px;
-  height: 750px;
+  height: 550px;
   padding: 20px;
   margin-bottom: 50px;
-  border: 7px dotted #f5f5f5;
+  border: 7px solid blue;
   box-shadow: inset 0 -3px 0 0 #f5f5f5, 0 3px 0 0 #f5f5f5;
+  color: black;
+  background-color: white;
+  opacity:0.8;
+}
+
+#music {
+  color:rgb(0, 0, 255);
+  size: 20px;
+}
+
+.jumbotron {
+  padding: 0;
+  margin: 0;
+  margin-bottom:0;
+  background-color: 0;
+  border-radius:0;
+}
+
+.footer {
+  background-color: white;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  margin:10px;
 }
